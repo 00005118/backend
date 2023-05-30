@@ -18,6 +18,7 @@ app.use('/plantsApi',userRoutes)//userRoute es el el complemento del link que se
 app.get("/", (req,res)=>{
     res.send("welcome to my API")
 })
+
 console.log(process.env.MONGODB_URI)
 //mongodb conection
 mongoose

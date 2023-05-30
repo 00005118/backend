@@ -3,9 +3,30 @@ POST http://localhost:9000/plantsApi/users HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "Larisa Fernandez",
-    "email":"lariferz565@gmail.com",
-    "password":"trestristestigres",
+    "name": "Kenia Marcela",
+    "email":"Keni384_marz@gmail.com",
+    "password":"ellanomequiere",
     "age": 33,
     "position": "Normal user"
 }
+
+###
+GET http://localhost:9000/plantsApi/users  HTTP/1.1
+
+###
+GET http://localhost:9000/plantsApi/users/647589c154ffbabc06dd44f5  HTTP/1.1
+
+###
+PUT http://localhost:9000/plantsApi/users/647589c154ffbabc06dd44f5 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Dora la exploradora",
+    "email":"doraybotas@gmail.com",
+    "password":"soyunacaricatura",
+    "age": 26,
+    "position": "Normal user"
+}
+
+###
+DELETE http://localhost:9000/plantsApi/users/647589c154ffbabc06dd44f5 HTTP/1.1

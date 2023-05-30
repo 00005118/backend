@@ -6,7 +6,7 @@ const userSchema = require("../models/user")
 const router = express.Router()
 
 
-
+//CREAR
 //creando un EndPoint, quiere decir la ruta final
 router.post('/users', (req, res) => { //creando una ruta llamada user
     //usando el modelo para guardar un nuevo usuario
@@ -18,6 +18,69 @@ router.post('/users', (req, res) => { //creando una ruta llamada user
     .catch((error)=> res.json({message: error}))
 }) 
 
+//CONSULTAR
+//creando un EndPoint, quiere decir la ruta final
+router.get('/users', (req, res) => { //creando una ruta llamada user
+    
+    //usando modelo de usuario
+   userSchema
+   //usamos la propiedad find para hacer get(consultar)
+    .find()
+    // si todo sale bien mostamos los datos
+    .then((data)=> res.json(data))
+    // si todo sale mal mostamos el error 
+    .catch((error)=> res.json({message: error}))
+}) 
+
+//CONSULTAR un usuario en ESPECIFICO
+//creando un EndPoint, quiere decir la ruta final
+router.get('/users/:id', (req, res) => { //creando una ruta llamada user y le pasamos un id
+    //creamos una variable id que agarrara e valor que le ingresemos,
+    // tambien podemos escrivir el nombre o gmail,etc
+   const {id} = req.params
+    //usando modelo de usuario
+    userSchema
+    .findById(id)
+    // si todo sale bien mostamos los datos
+    .then((data)=> res.json(data))
+    // si todo sale mal mostamos el error 
+    .catch((error)=> res.json({message: error}))
+}) 
+
+//ACTUALIZAR (MODIFICAR) 
+//creando un EndPoint, quiere decir la ruta final
+router.put('/users/:id', (req, res) => { //creando una ruta llamada user
+    //usamos la propiedad find para hacer get
+   const {id} = req.params
+   // agarramoso del cuerpo del mensaje los datos a modificar
+   const {name,email,password,age,position} = req.body
+    
+   //usando modelo de usuario
+    userSchema
+    //usamos la propiedad updateOne para modificar un registro
+    .updateOne({_id:id}, {$set: {name,email,password,age,position}})
+    // si todo sale bien mostamos los datos
+    .then((data)=> res.json(data))
+    // si todo sale mal mostamos el error 
+    .catch((error)=> res.json({message: error}))
+}) 
+
+
+//ELIMINAR (DELETE) un usuario en ESPECIFICO
+//creando un EndPoint, quiere decir la ruta final
+router.delete('/users/:id', (req, res) => { //creando una ruta llamada user y le PASAMOS un id
+    //creamos una variable id que agarrara e valor que le ingresemos
+   const {id} = req.params
+    
+   //usando modelo de usuario
+   userSchema
+    //en este caso busca el id y lo muestra y elimina
+    .findByIdAndDelete(id)
+    // si todo sale bien mostamos los datos
+    .then((data)=> res.json(data))
+    // si todo sale mal mostamos el error 
+    .catch((error)=> res.json({message: error}))
+}) 
 
 //exportamos la variable route que contine las rutas
 module.exports = router
