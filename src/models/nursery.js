@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const NurserySchema = mongoose.Schema({
+const nurserySchema = mongoose.Schema({
     name:{
         type: String,
         require: true
@@ -19,4 +19,4 @@ const NurserySchema = mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Nuersery', NurserySchema)
+module.exports = mongoose.model('Nursery', nurserySchema)

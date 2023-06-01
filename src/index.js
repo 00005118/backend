@@ -4,6 +4,7 @@ require("dotenv").config() // usado para variables de ambiente
 
 const userRoutes = require("./routes/user")
 const plantRoutes = require("./routes/plant")
+const nurseryRoutes = require("./routes/nursery")
 
 const app =  express()
 const port = process.env.PORT || 9000  //escuchando puerto 9000
@@ -15,7 +16,8 @@ const port = process.env.PORT || 9000  //escuchando puerto 9000
 app.use(express.json())
 //decimos que todas las rutas tendran este path
 app.use('/plantsApi',userRoutes)//userRoute es el el complemento del link que se pasa de userRoute
-app.use('/plantsApi',plantRoutes)//userRoute es el el complemento del link que se pasa de plantRoute
+app.use('/plantsApi',plantRoutes)//plantRoute es el el complemento del link que se pasa de plantRoute
+app.use('/plantsApi',nurseryRoutes)
 //routes -> definiendo rutas
 app.get("/", (req,res)=>{
     res.send("welcome to my API")

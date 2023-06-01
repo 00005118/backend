@@ -61,3 +61,27 @@ Content-Type: application/json
 }
 ###
 DELETE http://localhost:9000/plantsApi/plants/647589c154ffbabc06dd44f5 HTTP/1.1
+###
+POST http://localhost:9000/plantsApi/nursery HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Jardin de sarita",
+    "video":"https://lh3.googleusercontent.com/p/AF1QipO3XrEdSHQFUAanVDFmgGemAY7DeI8mtCz3Y7_I=s680-w680-h510",
+    "description":"Hemos realizado a lo largo de los años multiples proyectos de arreglo y s    uministro de plantas.",
+    "ubication":"2 Calle Ote. 7-1, Santa Tecla, El Salvador"
+}
+###
+GET http://localhost:9000/plantsApi/nursery HTTP/1.1
+###
+GET http://localhost:9000/plantsApi/nursery/6478e1b76d3eabeb840cda49 HTTP/1.1
+###
+PUT http://localhost:9000/plantsApi/nursery/647905e625a8f23b1a9e8cff HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Las tertulias vivero cafe",
+    "video":"https://lh3.googleusercontent.com/p/AF1QipO3XrEdSHQFUAanVDFmgGemAY7DeI8mtCz3Y7_I=s680-w680-h510",
+    "description":"Hemos realizado a lo largo de los años multiples proyectos de arreglo y s    uministro de plantas.",
+    "ubication":"PQ72+PXX, San Salvador, El Salvador"
+}
