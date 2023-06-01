@@ -21,6 +21,22 @@ const userSchema = mongoose.Schema({
     position:{
         type:String,
         require: true
+    },
+    // aqui referenciamos la otra tabla de relacion
+    alarms: {
+        type: [{ //un tipo de dato personalizado de tipo areglo
+            plant_id: { //referenciando de donde viene el id de planta
+                //el tipo que ira a traer, un id de la tabla(catalogo) Plant 
+                //que se defineen el modelo de plant
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Plant"
+            }, 
+            time: Date,
+            group: String,
+            water: Number
+        }],
+        //valor por default
+        default: []
     }
 })
 

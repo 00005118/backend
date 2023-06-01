@@ -14,10 +14,13 @@ const plantSchema = mongoose.Schema({
         type: Number,
         require: true
     },
+    image: {
+        type:String,
+        require: true
+    },
     description:{
         type: String,
         require: true
     }
-
 })
 module.exports = mongoose.model('Plant', plantSchema)

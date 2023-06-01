@@ -3,21 +3,21 @@ POST http://localhost:9000/plantsApi/users HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "Kenia Marcela",
-    "email":"Keni384_marz@gmail.com",
-    "password":"ellanomequiere",
-    "age": 33,
-    "position": "Normal user"
+    "name": "Manuel Perez",
+    "email":"perez_34menu@gmail.com",
+    "password":"ellanomeama",
+    "age": 55,
+    "position": "Admin user"
 }
 
 ###
 GET http://localhost:9000/plantsApi/users  HTTP/1.1
 
 ###
-GET http://localhost:9000/plantsApi/users/647589c154ffbabc06dd44f5  HTTP/1.1
+GET http://localhost:9000/plantsApi/users/6477d93875ae47ca97d55df8  HTTP/1.1
 
 ###
-PUT http://localhost:9000/plantsApi/users/647589c154ffbabc06dd44f5 HTTP/1.1
+PUT http://localhost:9000/plantsApi/users/6477d93875ae47ca97d55df8 HTTP/1.1
 Content-Type: application/json
 
 {
@@ -30,3 +30,34 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:9000/plantsApi/users/647589c154ffbabc06dd44f5 HTTP/1.1
+
+###
+POST http://localhost:9000/plantsApi/plants HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Bonsai",
+    "wateramount":15,
+    "sunamount":3,
+    "image": "https://media.istockphoto.com/id/155908124/photo/small-green-bonsai-tree-in-a-brown-plant-pot.jpg?s=612x612&w=0&k=20&c=GSbcXz_yoIFSwk5QF0vOUCk-hq0ULkhFTRBTfpQ25Yk=",
+    "description": "Bonsai,es una palabra de origen japonés que significa literalmente bon- bandeja-  sai -árbol- (aunque etimológicamente procede del término chino 盆栽, penzai, que significa pén = -cuenco- , zāi -planta-) y consiste en el arte de cultivar árboles y plantas, normalmente arbustos, controlando su tamaño para que permanezcan de un tamaño muy inferior al natural"
+}
+###
+
+GET http://localhost:9000/plantsApi/plants HTTP/1.1
+
+###
+GET http://localhost:9000/plantsApi/plants/6477d93875ae47ca97d55df8 HTTP/1.1
+###
+PUT http://localhost:9000/plantsApi/plants/6477d93875ae47ca97d55df8 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Cartuchos",
+    "wateramount":28,
+    "sunamount":6,
+    "image": "https://aprende.guatemala.com/wp-content/uploads/2021/09/Flor-de-cartucho-en-Guatemala.jpg",
+    "description": "Zantedeschia aethiopica, conocida comúnmente como cala, cala de Etiopía, aro de Etiopía, lirio de agua, cartucho, alcatraz, flor de pato o flor del jarro, es una planta perenne herbácea de origen sudafricano, de la familia de las aráceas, la más robusta y ampliamente naturalizada del género Zantedeschia"
+}
+###
+DELETE http://localhost:9000/plantsApi/plants/647589c154ffbabc06dd44f5 HTTP/1.1

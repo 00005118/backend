@@ -1,7 +1,9 @@
 const express = require("express")//usado para mongo db
 const mongoose = require("mongoose")
 require("dotenv").config() // usado para variables de ambiente
+
 const userRoutes = require("./routes/user")
+const plantRoutes = require("./routes/plant")
 
 const app =  express()
 const port = process.env.PORT || 9000  //escuchando puerto 9000
@@ -13,13 +15,13 @@ const port = process.env.PORT || 9000  //escuchando puerto 9000
 app.use(express.json())
 //decimos que todas las rutas tendran este path
 app.use('/plantsApi',userRoutes)//userRoute es el el complemento del link que se pasa de userRoute
-
+app.use('/plantsApi',plantRoutes)//userRoute es el el complemento del link que se pasa de plantRoute
 //routes -> definiendo rutas
 app.get("/", (req,res)=>{
     res.send("welcome to my API")
 })
 
-console.log(process.env.MONGODB_URI)
+//console.log(process.env.MONGODB_URI)    
 //mongodb conection
 mongoose
 .connect(process.env.MONGODB_URI)
