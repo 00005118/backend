@@ -47,7 +47,7 @@ router.put('/plants/:id', (req, res) => { //creando una ruta llamada user
 router.delete('/plants/:id', (req, res) => { 
     const {id} = req.params
     
-   userSchema
+    plantSchema
     .findByIdAndDelete(id)
     .then((data)=> res.json(data))
     .catch((error)=> res.json({message: error}))

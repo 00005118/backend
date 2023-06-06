@@ -82,5 +82,26 @@ router.delete('/users/:id', (req, res) => { //creando una ruta llamada user y le
     .catch((error)=> res.json({message: error}))
 }) 
 
+
+//Guardando una planta en un grupo
+router.post('/users/:id/alarm', async (req, res) => { //creando una ruta llamada user
+    // buscar el usuario por id, parms
+    const{id} = req.params
+    // construir el objeto alarm a partir de los datos del body
+    const{name,email,password,age,position,plant_id,time,group,water} = req.body
+    const document = await userSchema.findOne({_id: id})
+
+    if(!document) {
+        res.status(404).json({
+           message: "Not found" 
+        })
+    }
+
+    // modificar el usario para agregar la alarmar, agregar un objeto a un arreglo con mongosee
+    document.alarms.push({plant_id  ,time,group,water})
+    await document.save();
+
+    return res.status(201).json({message: "Alarm registered"})
+})
 //exportamos la variable route que contine las rutas
 module.exports = router

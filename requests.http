@@ -3,13 +3,13 @@ POST http://localhost:9000/plantsApi/users HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "Manuel Perez",
-    "email":"perez_34menu@gmail.com",
-    "password":"ellanomeama",
-    "age": 55,
-    "position": "Admin user"
-}
+    "name": "Macdanela Semimta",
+    "email":"MacSemi43@gmail.com",
+    "password":"megustaelpandulce",
+    "age": 40,
+    "position": "Normal user"
 
+}
 ###
 GET http://localhost:9000/plantsApi/users  HTTP/1.1
 
@@ -39,8 +39,8 @@ Content-Type: application/json
     "name": "Bonsai",
     "wateramount":15,
     "sunamount":3,
-    "image": "https://media.istockphoto.com/id/155908124/photo/small-green-bonsai-tree-in-a-brown-plant-pot.jpg?s=612x612&w=0&k=20&c=GSbcXz_yoIFSwk5QF0vOUCk-hq0ULkhFTRBTfpQ25Yk=",
-    "description": "Bonsai,es una palabra de origen japonés que significa literalmente bon- bandeja-  sai -árbol- (aunque etimológicamente procede del término chino 盆栽, penzai, que significa pén = -cuenco- , zāi -planta-) y consiste en el arte de cultivar árboles y plantas, normalmente arbustos, controlando su tamaño para que permanezcan de un tamaño muy inferior al natural"
+    "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.consumoteca.com%2Fcasa-y-jardin%2Fhistoria-de-los-rosas%2F&psig=AOvVaw0TR-NdhEiMggfo2no2H8bL&ust=1686154603936000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCMiX8cOFr_8CFQAAAAAdAAAAABAT",
+    "description": "El género Rosa está compuesto por un conocido grupo de arbustos generalmente espinosos y floridos representantes principales de la familia de las rosáceas. Se denomina rosa a la flor de los miembros de este género y rosal a la planta"
 }
 ###
 
@@ -60,16 +60,16 @@ Content-Type: application/json
     "description": "Zantedeschia aethiopica, conocida comúnmente como cala, cala de Etiopía, aro de Etiopía, lirio de agua, cartucho, alcatraz, flor de pato o flor del jarro, es una planta perenne herbácea de origen sudafricano, de la familia de las aráceas, la más robusta y ampliamente naturalizada del género Zantedeschia"
 }
 ###
-DELETE http://localhost:9000/plantsApi/plants/647589c154ffbabc06dd44f5 HTTP/1.1
+DELETE http://localhost:9000/plantsApi/plants/647f61ce8a2bc99254ac27bf HTTP/1.1
 ###
-POST http://localhost:9000/plantsApi/nursery HTTP/1.1
 Content-Type: application/json
+POST http://localhost:9000/plantsApi/nursery HTTP/1.1
 
 {
-    "name": "Jardin de sarita",
+    "name": "Las tertuliaADFASDe",
     "video":"https://lh3.googleusercontent.com/p/AF1QipO3XrEdSHQFUAanVDFmgGemAY7DeI8mtCz3Y7_I=s680-w680-h510",
     "description":"Hemos realizado a lo largo de los años multiples proyectos de arreglo y s    uministro de plantas.",
-    "ubication":"2 Calle Ote. 7-1, Santa Tecla, El Salvador"
+    "ubication":"PQ72+PXX, San Salvador, El Salvador"
 }
 ###
 GET http://localhost:9000/plantsApi/nursery HTTP/1.1
@@ -80,8 +80,25 @@ PUT http://localhost:9000/plantsApi/nursery/647905e625a8f23b1a9e8cff HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "Las tertulias vivero cafe",
+    "name": "Las tertuliaADFASDe",
     "video":"https://lh3.googleusercontent.com/p/AF1QipO3XrEdSHQFUAanVDFmgGemAY7DeI8mtCz3Y7_I=s680-w680-h510",
     "description":"Hemos realizado a lo largo de los años multiples proyectos de arreglo y s    uministro de plantas.",
     "ubication":"PQ72+PXX, San Salvador, El Salvador"
+}
+###
+DELETE http://localhost:9000/plantsApi/nursery/647905e625a8f23b1a9e8cff HTTP/1.1
+
+###
+POST http://localhost:9000/plantsApi/users/6477d92d75ae47ca97d55df6/alarm HTTP/1.1
+Content-Type: application/json
+
+{
+   "name": "Macdanela Semimta",
+    "email":"MacSemi43@gmail.com",
+    "password":"megustaelpandulce",
+    "age": 40,
+    "position": "Normal user",
+    "date": "12/4/2023 9:00:00",
+    "group": "Casa",
+    "water":30
 }

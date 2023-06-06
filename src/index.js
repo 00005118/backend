@@ -9,8 +9,8 @@ const nurseryRoutes = require("./routes/nursery")
 const app =  express()
 const port = process.env.PORT || 9000  //escuchando puerto 9000
 
-//middleware
-
+//middleware->sistema de software que ofrece funciones y servicios de nube comunes para las aplicaciones
+//en el cual req sera peticion, res nuestra respuesta
 //al retornar los datos para visualizarlos nos lo debuelve en formato .json
 //los comvertimos a objeto .js
 app.use(express.json())
