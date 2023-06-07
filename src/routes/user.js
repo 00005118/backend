@@ -88,7 +88,7 @@ router.post('/users/:id/alarm', async (req, res) => { //creando una ruta llamada
     // buscar el usuario por id, parms
     const{id} = req.params
     // construir el objeto alarm a partir de los datos del body
-    const{name,email,password,age,position,plant_id,time,group,water} = req.body
+    const{plant_id,time,group,water} = req.body
     const document = await userSchema.findOne({_id: id})
 
     if(!document) {
@@ -98,10 +98,10 @@ router.post('/users/:id/alarm', async (req, res) => { //creando una ruta llamada
     }
 
     // modificar el usario para agregar la alarmar, agregar un objeto a un arreglo con mongosee
-    document.alarms.push({plant_id  ,time,group,water})
+    document.alarms.push({plant_id,time,group,water})
     await document.save();
 
-    return res.status(201).json({message: "Alarm registered"})
+    return res.status(201).json({message: document})
 })
 //exportamos la variable route que contine las rutas
 module.exports = router
