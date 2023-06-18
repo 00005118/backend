@@ -18,7 +18,7 @@ const userSchema = mongoose.Schema({
         type:Number,
         require: true    
     },
-    position:{
+    position:{  
         type:String,
         require: true
     },

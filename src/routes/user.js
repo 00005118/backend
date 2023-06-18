@@ -90,7 +90,7 @@ router.delete("/users/:id", (req, res) => {
 ///////////////////////////////////////////////////////////
 ///****** ENDPOINTS ALARMA  *******/
 
-//Guardando una planta en un grupo
+//GUARDANDO una planta en un grupo
 router.post("/users/:id/alarm", async (req, res) => {
   //creando una ruta llamada user
   // buscar el usuario por id, parms
@@ -112,42 +112,39 @@ router.post("/users/:id/alarm", async (req, res) => {
   return res.status(201).json({ message: document });
 });
 
-//consultar una alarma en especifico
+//CONSULTAR una alarma en especifico
 router.get("/users/:id/alarms/:id_alarm", async(req, res) => {
   const { id, id_alarm } = req.params;
 
   userSchema
     .findById(id)
     .then(async (user) => {
-      // Dentro de user vas buscar la alarma
-      console.log(user.alarms.length);
-
+      
+      //Consultamos tama
       if(user.alarms.length <=0) return console.log({message:"Usuario no existe"}.end()) 
       console.log("Llegamos Aqui",user.alarms )
 
+      // Dentro de user vas buscar la alarma
+      //usamos la funcion find que pertenece a javaScrip para compara el arreglo de alarmas
       const foundAlarm = user.alarms.find(alarm => alarm._id.equals(id_alarm));
 
       if(!foundAlarm)
         return res.status(404).json({ error: "Alarm not found" });
     
-      foundAlarm.group = "Calle v2";
-      await user.save();
-
       return res.status(200).json(foundAlarm);
-    })
+    }) 
     .catch((error) => {
        return res.status(500).json({ message: error });
-    });
-});
+    })
+})
 
 
-//Modificando una alarma
+//MODIFICANDO una alarma
 router.put("/users/:id/alarms/:id_alarm", async(req, res) => {
   
   const { id, id_alarm } = req.params;
  
-  const { time,group,water} = req.body;
-
+  const { plant_id,time,group,water } = req.body;
 
   userSchema
     .findById(id)
@@ -162,18 +159,46 @@ router.put("/users/:id/alarms/:id_alarm", async(req, res) => {
       if(!foundAlarm)
         return res.status(404).json({ error: "Alarm not found" });
     
-      /*
-      modificando un registro
-      foundAlarm.group = "Calle v2";
-      */
-      await user.save();
+      //UNA forma de MODIFICAR un registro
+      foundAlarm.plant_id = plant_id 
+      foundAlarm.time = time
+      foundAlarm.group =group
+      foundAlarm.water = water
+
+      await user.save(foundAlarm);
 
       return res.status(200).json(foundAlarm);
     })
     .catch((error) => {
        return res.status(500).json({ message: error });
-    });
-});
+    })
+})
+
+//ELIMINAR un registro
+router.delete("/users/:id/alarms/:id_alarm", async(req, res) => {
+  const { id, id_alarm } = req.params;
+
+  userSchema.alarms
+    .findById(id)
+    .then(async (user) => {
+      // Dentro de user vas buscar la alarma
+      console.log(user.alarms.length);
+
+      if(user.alarms.length <=0) return console.log({message:"Alarma no existe"}.end()) 
+      //console.log("Llegamos Aqui",user.alarms )
+
+      console.log("Llegamos aqui en el delete")
+      const foundAlarm = user.alarms.findByIdAndDelete(id_alarm)
+
+      console.log("valores: ", foundAlarm)
+
+      return res.status(200).json(foundAlarm)
+    })
+    .catch((error) => {
+       return res.status(500).json({ message: error });
+    })
+})
+
 
 //exportamos la variable route que contine las rutas
 module.exports = router;
