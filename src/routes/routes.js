@@ -16,7 +16,8 @@ router.post('/plantsApi/plants',plantController.createPlant)
 router.post('/plantsApi/nursery',nurseryController.createNursery)
 //Crear una alarma
 router.post('/plantsApi/users/:id/alarm',alarmController.createAlarm)
-
+//Validando unicio de sesion
+router.post("/login/", userController.login)
 
 
 /*#############    GET     ################*/
