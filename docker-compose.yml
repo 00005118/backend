@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:latest
+    restart: always
+    environment:
+      # Nombre de la base de datos de inicialización de MongoDB
+      MONGO_INITDB_DATABASE: dbplantsserver
+      # Nombre de usuario root para MongoDB
+      MONGO_INITDB_ROOT_USERNAME: 00005118
+      # Contraseña para el usuario root de MongoDB
+      MONGO_INITDB_ROOT_PASSWORD: nXUbyBCfN3IF7Y7N
+
+  backend_plant:
+    build:
+      # Ruta al contexto de construcción (directorio donde se encuentra el Dockerfile)
+      context: .
+      # Nombre del archivo Dockerfile
+      dockerfile: Dockerfile
+    restart: always
+    container_name: plantContainer
+    ports:
+      # Mapeo de puerto del contenedor al host (puerto del contenedor: puerto del host)
+      - "9000:8080"
+    depends_on:
+      # Dependencia del servicio "backend_plant" en el servicio "mongo"
+      - mongo
