@@ -5,7 +5,7 @@ exports.createPlant = (req,res)=>{
     const plant = new plantSchema(req.body)
 
     plant.save()
-    .then((data)=> res.json(data))
+    .then((data)=> res.json({msg: "User create Successfully"}))
     .catch((error) => req.json(error))
 }
 
@@ -33,7 +33,9 @@ exports.putPlant = (req,res) =>{
     
    plantSchema
    .updateOne({_id:id}, {$set: {name,wateramount,sunamount,image,description}})
-   .then((data)=> res.json(data))
+   .then((data)=> res.json({
+    msg: "User update Successfully",
+  }))
    .catch((error)=> res.json({message: error}))
 }
 
@@ -42,6 +44,6 @@ exports.deletePlant = (req,res)=>{
     
     plantSchema
     .findByIdAndDelete(id)
-    .then((data)=> res.json(data))
+    .then((data)=> res.json({msg: "Plant delete Successfully"}))
     .catch((error)=> res.json({message: error}))
 }
