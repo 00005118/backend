@@ -7,7 +7,7 @@ const plantRoutes = require("./routes/plant")
 const nurseryRoutes = require("./routes/nursery")
 
 const app =  express()
-const port = process.env.PORT || 9000  //escuchando puerto 9000
+const port = process.env.PORT || 8080  //escuchando puerto 9000
 
 //middleware->sistema de software que ofrece funciones y servicios de nube comunes para las aplicaciones
 //en el cual req sera peticion, res nuestra respuesta

@@ -57,14 +57,21 @@ exports.login = async (req, res) => {
 
 
 //CONSULTAR
-exports.getAllUsers = (req, res) => {
-  userSchema
-    //usamos la propiedad find para hacer get(consultar)
-    .find()
-    // si todo sale bien mostamos los datos
-    .then((data) => res.json(data))
-    // si todo sale mal mostamos el error
-    .catch((error) => res.json({ message: error }));
+exports.getAllUsers = async (req, res) => {
+  try {
+    const users = await userSchema.find();
+
+    const userArray = users.map((user) => ({
+      name: user.name,
+      email: user.email,
+      age: user.age,
+      position:user.position,
+    }));
+
+    res.json(userArray);
+  } catch (error) {
+    res.json({ message: error });
+  }
 };
 
 //CONSULTAR un usuario en ESPECIFICO
