@@ -18,7 +18,7 @@ exports.createAlarm = async(req,res) => {
   document.alarms.push({ plant_id, time, group, water });
   await document.save();
 
-  return res.status(201).json({ message: document });
+  return res.status(201).json({msg: "Alarm create Successfully"});
 }
 
 exports.getAlarms = async(req,res)=>{
@@ -95,7 +95,7 @@ exports.putAlarm = async(req,res)=>{
   
         await user.save(foundAlarm);
   
-        return res.status(200).json(foundAlarm);
+        return res.status(200).json({msg: "Alarm update Successfully"});
       })
       .catch((error) => {
          return res.status(500).json({ message: error });
@@ -119,7 +119,7 @@ exports.deleteAlarm = (req,res)=>{
 
       console.log("valores: ", foundAlarm)
 
-      return res.status(200).json(foundAlarm)
+      return res.status(200).json({msg: "Alarm delete Successfully"})
     })
     .catch((error) => {
        return res.status(500).json({ message: error });
